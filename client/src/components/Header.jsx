@@ -56,11 +56,6 @@ export default function Header() {
               Projects
             </Link>
           </Navbar.Link>
-          <Navbar.Link active={path === '/contact'} as={'div'}>
-            <Link to='/contact'>
-              Contact
-            </Link>
-          </Navbar.Link>
         </Navbar.Collapse>
     </Navbar>
   )

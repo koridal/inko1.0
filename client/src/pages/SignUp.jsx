@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Label, TextInput, Button, Alert, Spinner } from 'flowbite-react';
 import { useState } from 'react';
+import OAuth from '../components/OAuth';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -57,17 +58,36 @@ export default function SignUp() {
           <form className='flex flex-col gap-4' onSubmit={handleSubmit} >
             <div>
               <Label value='Username' />
-              <TextInput type='text' placeholder='Your name' id='username' onChange={handleChange}/>
+              <TextInput 
+                type='text' 
+                placeholder='Your name' 
+                id='username' 
+                onChange={handleChange}
+              />
             </div>
             <div>
               <Label value='Email' />
-              <TextInput type='email' placeholder='sample@email.com' id='email' onChange={handleChange}/>
+              <TextInput 
+                type='email' 
+                placeholder='sample@email.com' 
+                id='email' 
+                onChange={handleChange}
+              />
             </div>
             <div>
               <Label value='Password' />
-              <TextInput type='password' placeholder='Your password' id='password' onChange={handleChange}/>
+              <TextInput 
+                type='password' 
+                placeholder='Your password' 
+                id='password' 
+                onChange={handleChange}
+              />
             </div>
-            <Button gradientDuoTone='purpleToPink' type='submit' disabled={loading} >
+            <Button 
+              gradientDuoTone='purpleToPink' 
+              type='submit' 
+              disabled={loading} 
+            >
               {
                 loading ? (
                   <>
@@ -77,6 +97,7 @@ export default function SignUp() {
                 ): 'Sign Up'
               }
             </Button>
+            <OAuth />
           </form>
           <div className='flex gap-2 text-sm mt-5'>
             <span>Have an account?</span>

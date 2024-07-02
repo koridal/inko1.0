@@ -2,7 +2,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Label, TextInput, Button, Alert, Spinner } from 'flowbite-react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice';
+import { 
+  signInStart, 
+  signInSuccess, 
+  signInFailure 
+} from '../redux/user/userSlice';
+import OAuth from '../components/OAuth';
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
@@ -57,13 +62,27 @@ export default function SignIn() {
           <form className='flex flex-col gap-4' onSubmit={handleSubmit} >
             <div>
               <Label value='Email' />
-              <TextInput type='email' placeholder='sample@email.com' id='email' onChange={handleChange}/>
+              <TextInput 
+                type='email' 
+                placeholder='sample@email.com' 
+                id='email' 
+                onChange={handleChange}
+              />
             </div>
             <div>
               <Label value='Password' />
-              <TextInput type='password' placeholder='**********' id='password' onChange={handleChange}/>
+              <TextInput 
+                type='password' 
+                placeholder='**********' 
+                id='password' 
+                onChange={handleChange}
+              />
             </div>
-            <Button gradientDuoTone='purpleToPink' type='submit' disabled={loading} >
+            <Button 
+              gradientDuoTone='purpleToPink' 
+              type='submit' 
+              disabled={loading} 
+            >
               {
                 loading ? (
                   <>
@@ -73,6 +92,7 @@ export default function SignIn() {
                 ): 'Sign In'
               }
             </Button>
+            <OAuth />
           </form>
           <div className='flex gap-2 text-sm mt-5'>
             <span>Don&apos;t have an account?</span>
