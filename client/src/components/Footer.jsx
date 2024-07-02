@@ -61,7 +61,7 @@ export default function FooterCom() {
           />
           <div className='flex items-center gap-2 text-gray-500'>
             <IoIosPin />
-            <p>Jl. Tengah No.55, Bantargebang, Kota Bks, Jawa Barat 17151</p>
+            <p className='text-sm'>Jl. Tengah No.55, Bantargebang, Kota Bks, Jawa Barat 17151</p>
           </div>
           <div className="flex gap-6 sm:mt-0 mt-4 sm:justify-center">
             <Footer.Icon href='https://facebook.com' icon={BsFacebook}/>
