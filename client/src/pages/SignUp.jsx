@@ -42,7 +42,7 @@ export default function SignUp() {
       <div className='flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5'>
         {/* Left */}
         <div className='flex-1'>
-          <Link to='/' className='text-2xl font-semibold dark:text-white tracking-tighter'>
+          <Link to='/' className='text-2xl font-semibold dark:text-white tracking-tight'>
             <span className='px-2 py-1 rounded-lg bg-gradient-to-r from-blue-700 via-blue-900 to-blue-950 text-white font-semibold'>
               Inko Jaya
             </span>

@@ -7,7 +7,7 @@ export default function Header() {
   const path = useLocation().pathname
   return (
     <Navbar className='border-b-2'>
-      <Link to='/' className='self-center whitespace-nowrap text-md sm:text-xl font-md dark:text-white tracking-tighter'>
+      <Link to='/' className='self-center whitespace-nowrap text-md sm:text-xl font-semibold dark:text-white tracking-tight'>
         <span className='px-2 py-1 rounded-lg bg-gradient-to-r from-blue-700 via-blue-900 to-blue-950 text-white font-semibold'>
           Inko Jaya
         </span>
