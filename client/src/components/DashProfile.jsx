@@ -235,9 +235,27 @@ export default function DashProfile() {
           placeholder="password" 
           onChange={handleChange}
         />
-        <Button type="submit" gradientDuoTone="purpleToBlue" outline>
-          Update
+        <Button 
+          type="submit" 
+          gradientDuoTone="purpleToBlue" 
+          outline
+          disabled={loading || imageFileUploading}
+        >
+          {loading ? 'Loading...' : 'Update'}
         </Button>
+        {
+          currentUser.isAdmin && (
+            <Link to={'/create-post'}>
+            <Button
+              type='button'
+              gradientDuoTone='purpleToPink'
+              className='w-full'
+            >
+              Create a post
+            </Button>
+          </Link>  
+          )
+        }
       </form>
       <div className="mt-5 flex justify-between text-red-500">
         <span onClick={() => setShowModal(true)} className="cursor-pointer">Delete Account</span>
