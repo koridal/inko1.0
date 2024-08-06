@@ -8,11 +8,19 @@ import {
   uploadBytesResumable,
 } from 'firebase/storage';
 import { app } from '../firebase';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
+const formats = [
+  'font', 'header', 'bold', 'italic', 'underline',
+  'strike', 'blockquote', 'list', 'bullet', 'indent',
+  'link', 'align', 'color', 'background', 'size', 'h1',
+  'image', 'video'
+];
+
 
 export default function UpdatePost() {
   const [file, setFile] = useState(null);
@@ -107,6 +115,27 @@ export default function UpdatePost() {
       setPublishError('Something went wrong');
     }
   };
+
+  const modules = useMemo(() => {
+    return {
+      toolbar: {
+        container: [
+          [{ size: ['small', false, 'large', 'huge'] }],
+          [{ align: [] }],
+          ['bold', 'italic', 'underline', 'strike'],
+          [{ list: 'ordered' }, { list: 'bullet' }],
+          ['link', 'image'],
+          [
+            {
+              color: [],
+            },
+            { background: [] },
+          ],
+        ],
+      },
+    };
+  }, []);
+
   return (
     <div className='p-3 max-w-3xl mx-auto min-h-screen'>
       <h1 className='text-center text-3xl my-7 font-semibold'>Update post</h1>
@@ -176,6 +205,8 @@ export default function UpdatePost() {
           placeholder='Write something...'
           className='h-72 mb-12'
           required
+          modules={modules}
+          formats={formats}
           onChange={(value) => {
             setFormData({ ...formData, content: value });
           }}

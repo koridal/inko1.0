@@ -10,9 +10,15 @@ import {
   ref,
   uploadBytesResumable,
 } from 'firebase/storage';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { app } from '../firebase';
 
+const formats = [
+  'font', 'header', 'bold', 'italic', 'underline',
+  'strike', 'blockquote', 'list', 'bullet', 'indent',
+  'link', 'align', 'color', 'background', 'size', 'h1',
+  'image', 'video'
+];
 
 export default function CreatePost() {
   const [file, setFile] = useState(null);
@@ -85,6 +91,26 @@ export default function CreatePost() {
     }
   };
 
+  const modules = useMemo(() => {
+    return {
+      toolbar: {
+        container: [
+          [{ size: ['small', false, 'large', 'huge'] }],
+          [{ align: [] }],
+          ['bold', 'italic', 'underline', 'strike'],
+          [{ list: 'ordered' }, { list: 'bullet' }],
+          ['link', 'image'],
+          [
+            {
+              color: [],
+            },
+            { background: [] },
+          ],
+        ],
+      },
+    };
+  }, []);
+
   return (
     <div className='p-3 max-w-3xl mx-auto min-h-screen'>
       <h1 className='text-center text-3xl my-7 font-semibold'>Create a post</h1>
@@ -153,6 +179,8 @@ export default function CreatePost() {
           placeholder='Write something...'
           className='h-72 mb-12'
           required
+          modules={modules}
+          formats={formats}
           onChange={
             (value) => {
             setFormData({...formData, content: value})
